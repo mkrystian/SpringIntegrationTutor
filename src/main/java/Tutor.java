@@ -4,7 +4,7 @@ import org.springframework.integration.support.MessageBuilder;
 
 public class Tutor {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/spring/spring-config.xml");
 
         DirectChannel randomGenInChannel = context.getBean("randomGenInChannel", DirectChannel.class);
