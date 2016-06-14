@@ -10,8 +10,12 @@
 
     <int:chain input-channel="randomGenInChannel"
                output-channel="stringOutChannel">
-        <int:service-activator expression="new java.util.Random().nextInt()"/>
-        <int:transformer expression="T(java.lang.String).valueOf(payload)"/>
+        <int:header-enricher>
+            <int:header name="headerName" value="3" overwrite="true"/>
+        </int:header-enricher>
+        <int:transformer expression="T(java.lang.Integer).valueOf(payload)"/>
+        <int:service-activator ref="soutBean"/>
+        <int:header-filter header-names="headerName,anotherHeader"/>
     </int:chain>
 
 </beans>
